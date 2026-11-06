@@ -1125,7 +1125,9 @@ const __r = p => (typeof p === 'string' && window.__resources && window.__resour
 if (!React.__rPatched) { const __ce = React.createElement; React.createElement = function (t, p, ...c) { if (p && typeof p.src === 'string') p = { ...p, src: __r(p.src) }; return __ce.call(this, t, p, ...c); }; React.__rPatched = true; }
 class Component extends DCLogic {
   state = { navBg: 'rgba(13,15,16,0)', scrollPct: 0, lightboxSrc: null, openCase: null, offer: null };
-  openCase = (id) => { this._returnY = window.scrollY; this.setState({ openCase: id }); window.scrollTo(0, 0); };
+  openCase = (id, fromPop) => { if (!fromPop) { this._returnY = window.scrollY; history.pushState({ dcLayer: 'case', caseId: id }, ''); } this.setState({ openCase: id }); window.scrollTo(0, 0); };
+  _closeCase = () => { const y = this._returnY || 0; this.setState({ openCase: null }, () => requestAnimationFrame(() => window.scrollTo(0, y))); };
+  _back = (layer, fn) => { const s = history.state; if (s && s.dcLayer === layer) history.back(); else fn(); };
   decorate = (list) => list.map(p => ({
     ...p,
     fit: p.fit || 'cover',
@@ -1137,7 +1139,7 @@ class Component extends DCLogic {
       style: { position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: p.fit || 'cover', background: p.bg || 'transparent', display: 'block' }
     }) : null
   }));
-  openLightbox = (src) => this.setState({ lightboxSrc: src });
+  openLightbox = (src, fromPop) => { if (!fromPop) history.pushState({ dcLayer: 'lightbox', caseId: this.state.openCase, src }, ''); this.setState({ lightboxSrc: src }); };
   withImg = (list, key) => list.map(it => ({
     ...it,
     [key]: React.createElement('img', {
@@ -1164,9 +1166,21 @@ class Component extends DCLogic {
       this.setState({ scrollPct: pct, navBg });
     };
     window.addEventListener('scroll', this._onScroll, { passive: true });
+    if ('scrollRestoration' in history) history.scrollRestoration = 'manual';
+    this._onPop = (e) => {
+      const s = e.state || {};
+      if (this.state.lightboxSrc && s.dcLayer !== 'lightbox') this.setState({ lightboxSrc: null });
+      if (this.state.offer && s.dcLayer !== 'offer') this.setState({ offer: null });
+      if (s.caseId) { if (this.state.openCase !== s.caseId) this.openCase(s.caseId, true); }
+      else if (this.state.openCase) this._closeCase();
+      if (s.dcLayer === 'lightbox' && s.src && this.state.lightboxSrc !== s.src) this.openLightbox(s.src, true);
+      if (s.dcLayer === 'offer' && !this.state.offer) this.setState({ offer: 'form' });
+    };
+    window.addEventListener('popstate', this._onPop);
   }
   componentWillUnmount() {
     window.removeEventListener('scroll', this._onScroll);
+    window.removeEventListener('popstate', this._onPop);
   }
 
   renderVals() {
@@ -1186,8 +1200,8 @@ class Component extends DCLogic {
       offerSending: this.state.offer === 'sending',
       offerError: this.state.offer === 'error',
       submitLabel: this.state.offer === 'sending' ? '보내는 중…' : '제안 보내기',
-      openOffer: (e) => { e && e.preventDefault(); this.setState({ offer: 'form' }); },
-      closeOffer: () => this.setState({ offer: null }),
+      openOffer: (e) => { e && e.preventDefault(); history.pushState({ dcLayer: 'offer', caseId: this.state.openCase }, ''); this.setState({ offer: 'form' }); },
+      closeOffer: () => this._back('offer', () => this.setState({ offer: null })),
       stop: (e) => e.stopPropagation(),
       submitOffer: (e) => {
         e.preventDefault();
@@ -1266,10 +1280,7 @@ class Component extends DCLogic {
         { title: '평형대별 조성안 배포', desc: '매장 규모별 조성안 정리 및 하이마트 56개점 배포' },
         { title: '연출 및 점검', desc: '매장별 시공 상태 점검, POP 연출 일정 조율 및 인력 분배' }
       ],
-      closeCase: () => {
-        const y = this._returnY || 0;
-        this.setState({ openCase: null }, () => requestAnimationFrame(() => window.scrollTo(0, y)));
-      },
+      closeCase: () => this._back('case', this._closeCase),
       openJeju4: () => this.openLightbox('assets/jf-a.jpg'),
       openDone001: () => this.openLightbox('assets/jeju-done-001.jpg'),
       openDone002: () => this.openLightbox('assets/jeju-done-002.jpg'),
@@ -1283,7 +1294,7 @@ class Component extends DCLogic {
       openJeju1: () => this.openLightbox('assets/jf-b.jpg'),
       openJeju2: () => this.openLightbox('assets/jeju-2.png'),
       openJeju3: () => this.openLightbox('assets/jeju-3.png'),
-      closeLightbox: () => this.setState({ lightboxSrc: null }),
+      closeLightbox: () => this._back('lightbox', () => this.setState({ lightboxSrc: null })),
       marqueeItems: (() => { const b = ['AUTOCAD','PHOTOSHOP','ILLUSTRATOR','전산응용건축제도기능사','컴퓨터그래픽스운용기능사','LG전자','HSAD','VMD-PLUS']; return b.concat(b); })(),
       projects: this.decorate([
         { tag: 'Completed', client: 'LG전자 베스트샵 제주본점', title: 'JEJU Family Lounge', year: '2026', desc: '1층 유휴 공간을 제주 자연 포토존과 플레이·북카페 라운지로 재구성. 기획부터 2026년 10월 시공 완료까지.', placeholder: 'SIMULATION IMAGE\nW3000×H2870×D600', chips: ['Concept','시뮬레이션','컨셉 설계'], image: 'assets/jeju-done-008.jpg', onClick: () => this.openCase('jeju') },
