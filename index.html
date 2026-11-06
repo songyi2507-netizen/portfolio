@@ -54,6 +54,60 @@
 
 
 
+<style id="responsive-overrides">
+/* ===== 반응형 보정 (인라인 스타일 덮어쓰기) ===== */
+img { max-width: 100%; }
+@media (max-width: 1024px) {
+  header[style*="padding: 22px 56px"] { padding: 16px 28px !important; }
+  header nav { gap: 22px !important; }
+  section[style*="56px"], footer[style*="56px"] { padding-left: 28px !important; padding-right: 28px !important; }
+  div[style*="position: sticky"][style*="56px"] { padding-left: 28px !important; padding-right: 28px !important; }
+  [style*="repeat(5, 1fr)"] { grid-template-columns: repeat(3, minmax(0, 1fr)) !important; row-gap: 28px !important; }
+  [style*="repeat(5, 1fr)"] > [style*="position: absolute"] { display: none !important; }
+}
+@media (max-width: 760px) {
+  /* 상단 메뉴 */
+  header[style*="padding: 22px 56px"] { padding: 14px 20px !important; }
+  header > div > span + span { display: none !important; }
+  header nav { gap: 14px !important; font-size: 13px !important; }
+  header nav a[style*="padding: 11px 24px"] { display: none !important; }
+  /* 섹션 여백 */
+  section[style*="56px"], footer[style*="56px"] { padding-left: 20px !important; padding-right: 20px !important; }
+  div[style*="position: sticky"][style*="56px"] { padding: 12px 20px !important; }
+  section[style*="padding: 200px"] { padding-top: 120px !important; padding-bottom: 80px !important; min-height: auto !important; }
+  section[style*="padding: 140px 56px;"], section[style*="padding: 160px"] { padding-top: 88px !important; padding-bottom: 88px !important; }
+  section[style*="padding: 140px 56px 60px"] { padding-top: 88px !important; padding-bottom: 40px !important; }
+  section[style*="padding: 140px 56px 0px"] { padding-top: 88px !important; }
+  section[style*="padding: 100px 56px"] { padding-top: 64px !important; padding-bottom: 64px !important; }
+  h1[style*="clamp(52px"] { font-size: 42px !important; line-height: 1.1 !important; }
+  p[style*="font-size: 19px"] { font-size: 16px !important; }
+  /* 첫 화면 버튼·숫자 */
+  section[style*="padding: 200px"] div[style*="gap: 16px"] { flex-wrap: wrap !important; row-gap: 24px !important; }
+  section[style*="padding: 200px"] div[style*="gap: 28px"] { margin-left: 0 !important; }
+  /* 줄바꿈 금지 해제 */
+  [style*="white-space: nowrap"] { white-space: normal !important; }
+  /* 경력 타임라인: 날짜 위, 내용 아래 */
+  [style*="grid-template-columns: 220px 1fr"] { grid-template-columns: minmax(0, 1fr) !important; gap: 16px !important; padding: 28px 0 !important; }
+  /* 자동 그리드는 한 줄에 하나 */
+  [style*="repeat(auto-fit"] { grid-template-columns: minmax(0, 1fr) !important; }
+  /* 고정 열 그리드는 2열 */
+  [style*="grid-template-columns: repeat("]:not([style*="auto-fit"]) { grid-template-columns: repeat(2, minmax(0, 1fr)) !important; }
+  [style*="grid-column: span 2"] { grid-row: auto !important; }
+  [style*="repeat(5, 1fr)"] { grid-template-columns: repeat(2, minmax(0, 1fr)) !important; }
+  /* 하단·모달 */
+  footer[style*="justify-content: space-between"] { flex-direction: column !important; align-items: flex-start !important; gap: 16px !important; }
+  section[style*="text-align: center"] div[style*="justify-content: center"] { flex-wrap: wrap !important; }
+  a[style*="padding: 18px 40px"] { padding: 16px 28px !important; }
+  div[style*="cursor: zoom-out"] { padding: 16px !important; }
+  div[style*="max-width: 560px"] { padding: 24px 20px !important; }
+}
+@media (max-width: 480px) {
+  /* 글 위주 그리드는 한 줄에 하나, 사진 그리드는 2열 유지 */
+  [style*="grid-template-columns: repeat("]:not([style*="auto-fit"]):not(:has(> [style*="aspect-ratio"])) { grid-template-columns: minmax(0, 1fr) !important; }
+  h1[style*="clamp(52px"] { font-size: 36px !important; }
+  header nav { gap: 12px !important; font-size: 12.5px !important; }
+}
+</style>
 </head>
 <body>
 <x-dc>
