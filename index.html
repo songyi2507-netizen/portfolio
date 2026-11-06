@@ -57,6 +57,8 @@
 <style id="responsive-overrides">
 /* ===== 반응형 보정 (인라인 스타일 덮어쓰기) ===== */
 img { max-width: 100%; }
+#tools [style*="minmax(360px"] { max-width: 920px; }
+#tools [style*="aspect-ratio: 16 / 10"] img { object-position: top center; }
 h1[style*="clamp(52px"] { font-size: clamp(40px, 5vw, 72px) !important; line-height: 1.12 !important; }
 @media (max-width: 1024px) {
   header[style*="padding: 22px 56px"] { padding: 16px 28px !important; }
