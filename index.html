@@ -57,6 +57,7 @@
 <style id="responsive-overrides">
 /* ===== 반응형 보정 (인라인 스타일 덮어쓰기) ===== */
 img { max-width: 100%; }
+p[style*="white-space: nowrap"] { white-space: normal !important; }
 #about > div[style*="max-width: 1100px"] { max-width: none !important; }
 #about > div > p { max-width: 900px; }
 section#career { background: transparent !important; border-top: none !important; border-bottom: none !important; }
@@ -1001,7 +1002,7 @@ a:hover { color:#eddcb0; }
   <section id="tools" style="padding:140px 56px 0;">
     <div style="font-size:13px; font-weight:600; letter-spacing:0.18em; color:#d9c18a; margin-bottom:16px; text-transform:uppercase;">Digital Tools</div>
     <h2 style="font-family:'Manrope'; font-weight:800; font-size:clamp(34px,4vw,52px); margin:0 0 16px; letter-spacing:-0.01em;">직접 만든 디지털 도구</h2>
-    <p style="color:#a9a294; font-size:15px; line-height:1.7; margin:0 0 64px; white-space:nowrap;">반복되는 업무와 흩어진 자료를 하나의 흐름으로 묶기 위해, AI 코딩 도구로 직접 기획·개발한 관리 시스템과 콘텐츠 제작 도구입니다.</p>
+    <p style="color:#a9a294; font-size:15px; line-height:1.7; margin:0 0 64px; white-space:nowrap;">AI 코딩 도구로 직접 기획·개발한 도구들입니다. 업무에서는 흩어진 데이터를 하나로 묶었고, 개인 프로젝트에서는 콘텐츠 제작 과정을 자동화했습니다.</p>
     <div style="display:grid; grid-template-columns: repeat(auto-fit, minmax(360px, 1fr)); gap:28px;">
       <sc-for list="{{ systems }}" as="sys" hint-placeholder-count="2">
         <div sc-camel-on-click="{{ sys.onOpen }}" style="background:#141617; border:1px solid rgba(255,255,255,0.07); border-radius:20px; overflow:hidden; cursor:pointer; transition: transform .4s cubic-bezier(.16,1,.3,1), border-color .4s;" style-hover="transform: translateY(-8px); border-color: rgba(217,193,138,0.35);">
