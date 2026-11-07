@@ -1313,7 +1313,7 @@ class Component extends DCLogic {
       closeLightbox: () => this._back('lightbox', () => this.setState({ lightboxSrc: null })),
       marqueeItems: (() => { const b = ['AUTOCAD','PHOTOSHOP','ILLUSTRATOR','전산응용건축제도기능사','컴퓨터그래픽스운용기능사','LG전자','HSAD','VMD-PLUS']; return b.concat(b); })(),
       projects: this.decorate([
-        { tag: 'Completed', client: 'LG전자 베스트샵 제주본점', title: 'JEJU Family Lounge', year: '2026', desc: '1층 유휴 공간을 제주 자연 포토존과 플레이·북카페 라운지로 재구성. 기획부터 2026년 10월 시공 완료까지.', placeholder: 'SIMULATION IMAGE\nW3000×H2870×D600', chips: ['Concept','시뮬레이션','컨셉 설계'], image: 'assets/jeju-done-008.jpg', onClick: () => this.openCase('jeju') },
+        { tag: 'Space Planning', client: 'LG전자 베스트샵 제주본점', title: 'JEJU Family Lounge', year: '2026', desc: '1층 유휴 공간을 제주 자연 포토존과 플레이·북카페 라운지로 재구성. 기획부터 2026년 10월 시공 완료까지.', placeholder: 'SIMULATION IMAGE\nW3000×H2870×D600', chips: ['Concept','시뮬레이션','컨셉 설계'], image: 'assets/jeju-done-008.jpg', onClick: () => this.openCase('jeju') },
         { tag: 'Styling', client: 'LG전자 베스트샵 동대문점', title: '구독존·생활씬 소품 연출', year: '2026', desc: '스타벅스 시범 입점에 맞춘 구독존 노출 강화. 긴급 소품 연출 요청을 제안부터 현장 연출까지 완료.', placeholder: 'STORE PHOTO', chips: ['Props','구독존','긴급 대응'], image: 'assets/ddm-016.jpg', onClick: () => this.openCase('ddm') },
         { tag: 'Event', client: '롯데하이마트', title: 'LG전자 행사 연출', year: '2026', desc: '행사존 연출 아이템 기획 및 시안 작업, 평형대별 조성안 하이마트 56개점 배포, 현장 연출 및 점검.', placeholder: 'EVENT ZONE\n1600×1200', chips: ['Event','56개점','연출 및 점검'], image: 'assets/himart-thumb.jpg', onClick: () => this.openCase('himart') },
         { tag: 'Flagship', client: 'LG전자 플래그십 D5(강남)', title: '1F 공간 연출', year: '2023–현재', desc: '플래그십 매장 1층 공간 연출 실행 및 임원 방문 대응.', placeholder: 'STORE PHOTO\n1600×1200', chips: ['Flagship','임원 방문'] },
