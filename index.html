@@ -57,6 +57,28 @@
 <style id="responsive-overrides">
 /* ===== 반응형 보정 (인라인 스타일 덮어쓰기) ===== */
 img { max-width: 100%; }
+#case-d5 .sc-group { margin-bottom: 72px; }
+#case-d5 .sc-head { display:flex; gap:20px; align-items:flex-start; margin-bottom:22px; padding-top:22px; border-top:1px solid rgba(255,255,255,0.08); }
+#case-d5 .sc-num { font-family:'Manrope'; font-weight:800; font-size:28px; color:#d9c18a; line-height:1; }
+#case-d5 .sc-en { font-size:12px; font-weight:600; letter-spacing:0.16em; color:#8a8378; margin-bottom:6px; }
+#case-d5 .sc-ko { font-family:'Manrope'; font-weight:700; font-size:19px; color:#f2efe9; margin-bottom:6px; }
+#case-d5 .sc-desc { font-size:14px; color:#a9a294; line-height:1.6; }
+#case-d5 .sc-grid { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:12px; }
+#case-d5 .sc-grid.sc-two { grid-template-columns:repeat(2,minmax(0,1fr)); }
+#case-d5 .sc-tile { position:relative; aspect-ratio:4/3; border-radius:14px; overflow:hidden; cursor:zoom-in; background:#141617; }
+#case-d5 .sc-tile.sc-big { grid-column:span 2; grid-row:span 2; aspect-ratio:auto; }
+#case-d5 .sc-tile img { position:absolute; inset:0; width:100%; height:100%; object-fit:cover; display:block; transition:transform .6s cubic-bezier(.16,1,.3,1); }
+#case-d5 .sc-tile:hover img { transform:scale(1.04); }
+#case-d5 .sc-tile::after { content:''; position:absolute; inset:auto 0 0 0; height:45%; background:linear-gradient(transparent, rgba(8,9,10,0.75)); pointer-events:none; }
+#case-d5 .sc-cap { position:absolute; left:14px; bottom:12px; z-index:1; font-size:13px; font-weight:600; color:#f2efe9; letter-spacing:0.01em; }
+@media (min-width: 761px) { #case-d5 .sc-grid:not(.sc-two) .sc-tile:last-child:nth-child(5) { grid-column:span 2; aspect-ratio:auto; } }
+@media (max-width: 760px) {
+  #case-d5 .sc-grid { grid-template-columns:repeat(2,minmax(0,1fr)) !important; gap:8px; }
+  #case-d5 .sc-tile.sc-big { grid-row:auto; aspect-ratio:16/10; }
+  #case-d5 .sc-group { margin-bottom:52px; }
+  #case-d5 .sc-cap { font-size:12px; left:10px; bottom:8px; }
+  #case-d5 .sc-grid:not(.sc-two) .sc-tile:last-child:nth-child(even) { grid-column:span 2; aspect-ratio:16/10; }
+}
 @media (max-width: 1180px) { .sc-br { display:none; } }
 #case-seocho .sc-group { margin-bottom: 72px; }
 #case-seocho .sc-head { display:flex; gap:20px; align-items:flex-start; margin-bottom:22px; padding-top:22px; border-top:1px solid rgba(255,255,255,0.08); }
@@ -995,6 +1017,17 @@ a:hover { color:#eddcb0; }
 
   </section>
   </sc-if>
+  <!-- Case study: Flagship D5 -->
+  <sc-if value="{{ showD5 }}" hint-placeholder-val="{{ false }}">
+  <section id="case-d5" style="padding:100px 56px 140px;">
+    <div style="display:flex; align-items:baseline; gap:16px; margin-bottom:16px;"><div style="font-family:'Manrope'; font-weight:800; font-size:15px; color:#d9c18a; letter-spacing:0.08em;">CASE 05</div><div style="height:1px; width:40px; background:#d9c18a;"></div><div style="font-size:13px; font-weight:600; letter-spacing:0.18em; color:#d9c18a; text-transform:uppercase;">Flagship Store · Dimension 5</div></div>
+    <h2 style="font-family:'Manrope'; font-weight:800; font-size:clamp(30px,3.6vw,44px); margin:0 0 16px; letter-spacing:-0.01em;">LG전자 플래그십 D5 정기 관리·연출</h2>
+    <div style="display:flex; gap:24px; flex-wrap:wrap; color:#a9a294; font-size:14.5px; margin-bottom:40px;"><span>LG전자 플래그십 D5 (강남 도산대로)</span><span style="color:#5c5648;">·</span><span>2025년 8월 오픈 · 지상 5층</span><span style="color:#5c5648;">·</span><span>정기 관리 담당</span></div>
+    <p style="color:#c9c3b6; font-size:15.5px; line-height:1.85; margin:0 0 64px; max-width:980px; text-wrap:pretty;">D5(Dimension 5)는 LG전자가 기존 베스트샵 강남본점을 전면 리뉴얼해 2025년 8월 문을 연 플래그십 매장입니다. 연면적 약 2,700㎡, 지상 5층 규모로 1층 OLED 아트 라운지부터 IT·공기 케어·프리미엄 쇼룸, 5층 비전홀까지 LG전자의 기술과 브랜드 철학을 가장 프리미엄하게 경험하는 공간입니다. 이 매장의 주기적인 관리를 담당하며 층별 진열·연출 상태를 점검하고 시즌 테마에 맞춰 공간을 정비하고 있습니다.</p>
+    <div style="margin-bottom:80px;"><div style="font-size:13px; font-weight:600; letter-spacing:0.14em; color:#d9c18a; margin-bottom:14px; text-transform:uppercase;">Scope</div><div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); gap:16px;"><div style="padding:22px; background:#141617; border:1px solid rgba(255,255,255,0.07); border-radius:16px;"><div style="font-family:'Manrope'; font-weight:700; font-size:15px; color:#d9c18a; margin-bottom:8px;">정기 관리</div><div style="font-size:14px; color:#a9a294; line-height:1.7;">플래그십 매장의 층별 진열·연출 상태를 주기적으로 점검하고 보완 사항 정비</div></div><div style="padding:22px; background:#141617; border:1px solid rgba(255,255,255,0.07); border-radius:16px;"><div style="font-family:'Manrope'; font-weight:700; font-size:15px; color:#d9c18a; margin-bottom:8px;">1F 웰컴 라운지</div><div style="font-size:14px; color:#a9a294; line-height:1.7;">T-OLED 아트월 라운지와 리셉션, 협업 전시존의 첫인상 관리</div></div><div style="padding:22px; background:#141617; border:1px solid rgba(255,255,255,0.07); border-radius:16px;"><div style="font-family:'Manrope'; font-weight:700; font-size:15px; color:#d9c18a; margin-bottom:8px;">쇼윈도·시즌 연출</div><div style="font-size:14px; color:#a9a294; line-height:1.7;">웨딩 페스타 등 시즌 테마에 맞춘 쇼윈도·입구 연출 운영</div></div><div style="padding:22px; background:#141617; border:1px solid rgba(255,255,255,0.07); border-radius:16px;"><div style="font-family:'Manrope'; font-weight:700; font-size:15px; color:#d9c18a; margin-bottom:8px;">임원 방문 대응</div><div style="font-size:14px; color:#a9a294; line-height:1.7;">방문 일정에 맞춘 사전 점검과 공간 정비</div></div></div></div>
+    <div><div style="font-size:13px; font-weight:600; letter-spacing:0.14em; color:#d9c18a; margin-bottom:14px; text-transform:uppercase;">Floor View</div><h3 style="font-family:'Manrope'; font-weight:700; font-size:22px; margin:0 0 40px; letter-spacing:-0.01em;">층별 현장 사진</h3><div class="sc-group"><div class="sc-head"><span class="sc-num">1F</span><div><div class="sc-en">1F · WELCOME</div><div class="sc-ko">1층 웰컴 라운지</div><div class="sc-desc">T-OLED × LG ART FOR YOU 라운지와 리셉션, xboom 협업 전시, 웨딩 페스타 쇼윈도로 브랜드 첫인상을 구성</div></div></div><div class="sc-grid"><div class="sc-tile sc-big" sc-camel-on-click="{{ openD51 }}"><img src="assets/d5-1f-lounge-v1.webp" alt="T-OLED × ART FOR YOU 라운지" loading="lazy"><span class="sc-cap">T-OLED × ART FOR YOU 라운지</span></div><div class="sc-tile " sc-camel-on-click="{{ openD52 }}"><img src="assets/d5-1f-reception-v1.webp" alt="리셉션 데스크" loading="lazy"><span class="sc-cap">리셉션 데스크</span></div><div class="sc-tile " sc-camel-on-click="{{ openD53 }}"><img src="assets/d5-1f-xboom-v1.webp" alt="xboom × SUPER73 협업 전시" loading="lazy"><span class="sc-cap">xboom × SUPER73 협업 전시</span></div><div class="sc-tile " sc-camel-on-click="{{ openD54 }}"><img src="assets/d5-1f-window-v1.webp" alt="웨딩 페스타 쇼윈도" loading="lazy"><span class="sc-cap">웨딩 페스타 쇼윈도</span></div><div class="sc-tile " sc-camel-on-click="{{ openD55 }}"><img src="assets/d5-1f-window2-v1.webp" alt="쇼윈도 정면" loading="lazy"><span class="sc-cap">쇼윈도 정면</span></div></div></div></div>
+  </section>
+  </sc-if>
   <!-- System detail -->
   <sc-if value="{{ showSystem }}" hint-placeholder-val="{{ false }}">
   <section style="padding:100px 56px 140px;">
@@ -1301,6 +1334,12 @@ class Component extends DCLogic {
       showSystem: ['vts','vboard','shorts'].includes(this.state.openCase),
       showDdm: this.state.openCase === 'ddm',
       showSeocho: this.state.openCase === 'seocho',
+      showD5: this.state.openCase === 'd5',
+      openD51: () => this.openLightbox('assets/d5-1f-lounge-v1.webp'),
+      openD52: () => this.openLightbox('assets/d5-1f-reception-v1.webp'),
+      openD53: () => this.openLightbox('assets/d5-1f-xboom-v1.webp'),
+      openD54: () => this.openLightbox('assets/d5-1f-window-v1.webp'),
+      openD55: () => this.openLightbox('assets/d5-1f-window2-v1.webp'),
       openSc30: () => this.openLightbox('assets/seocho-artforyou-v1.webp'),
       openSc31: () => this.openLightbox('assets/seocho-library-v1.webp'),
       openSc32: () => this.openLightbox('assets/seocho-welcome-v1.webp'),
@@ -1386,7 +1425,7 @@ class Component extends DCLogic {
         { tag: 'Space Planning', client: 'LG전자 베스트샵 제주본점', title: 'JEJU Family Lounge', year: '2026', desc: '1층 유휴 공간을 제주 자연 포토존과 플레이·북카페 라운지로 재구성. 기획부터 2026년 10월 시공 완료까지.', placeholder: 'SIMULATION IMAGE\nW3000×H2870×D600', chips: ['Concept','시뮬레이션','컨셉 설계'], image: 'assets/jeju-done-008.jpg', onClick: () => this.openCase('jeju') },
         { tag: 'Styling', client: 'LG전자 베스트샵 동대문점', title: '구독존·생활씬 소품 연출', year: '2026', desc: '스타벅스 시범 입점에 맞춘 구독존 노출 강화. 긴급 소품 연출 요청을 제안부터 현장 연출까지 완료.', placeholder: 'STORE PHOTO', chips: ['Props','구독존','긴급 대응'], image: 'assets/ddm-016.jpg', onClick: () => this.openCase('ddm') },
         { tag: 'Event', client: '롯데하이마트', title: 'LG전자 행사 연출', year: '2026', desc: '행사존 연출 아이템 기획 및 시안 작업, 평형대별 조성안 하이마트 56개점 배포, 현장 연출 및 점검.', placeholder: 'EVENT ZONE\n1600×1200', chips: ['Event','56개점','연출 및 점검'], image: 'assets/himart-thumb.jpg', onClick: () => this.openCase('himart') },
-        { tag: 'Flagship', client: 'LG전자 플래그십 D5(강남)', title: '1F 공간 연출', year: '2023–현재', desc: '플래그십 매장 1층 공간 연출 실행 및 임원 방문 대응.', placeholder: 'STORE PHOTO\n1600×1200', chips: ['Flagship','임원 방문'] },
+        { tag: 'Flagship', client: 'LG전자 플래그십 D5(강남)', title: '플래그십 D5 정기 관리', year: '2023–현재', desc: 'LG전자 최상위 프리미엄 매장인 플래그십 D5의 층별 진열·연출을 주기적으로 관리하고 임원 방문에 대응.', placeholder: 'STORE PHOTO\n1600×1200', chips: ['Flagship','정기 관리','임원 방문'], image: 'assets/d5-1f-lounge-v1.webp', onClick: () => this.openCase('d5') },
         { tag: 'Premium', client: 'LG전자 베스트샵 서초본점', title: '임원 방문 대비 매장 프리미엄화', year: '2026', desc: '임원 방문에 맞춰 TV·SIGNATURE·구독·웨딩 존 등 전 매장을 점검하고, 프리미엄 브랜드 경험이 이어지도록 연출을 정비.', placeholder: 'STORE PHOTO', chips: ['매장 점검','존별 연출','임원 방문'], image: 'assets/seocho-tv-v1.webp', onClick: () => this.openCase('seocho') },
       ]),
       jejuHighlights: [
